@@ -5,7 +5,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import VolunteerForm from "@/components/sections/volunteer-form"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import {Loader2} from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Volunteer | The Covalent Project",
