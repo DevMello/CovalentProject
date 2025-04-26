@@ -97,8 +97,7 @@ export default function VolunteerForm() {
             form.reset()
         } catch (error) {
             toast("Submission failed", {
-                description: "There was an error submitting your application. Please try again.",
-                variant: "destructive",
+                error: "There was an error submitting your application. Please try again.",
             })
             console.error("Submission error:", error)
         } finally {
