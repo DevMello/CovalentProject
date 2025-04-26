@@ -7,9 +7,9 @@ import { usePathname } from "next/navigation";
 
 const links = [
     { href: "/about", label: "About Us", variant: "ghost" },
-    { href: "/dashboard", label: "Dashboard", variant: "ghost" },
+    { href: "/volunteer", label: "Volunteer", variant: "ghost" },
     { href: "/help", label: "Help", variant: "ghost" },
-    { href: "/contact", label: "Contact Us", variant: "default" },
+    { href: "/dashboard", label: "Dashboard", variant: "default" },
 ] as const;
 
 export function NavLinks() {
@@ -22,7 +22,7 @@ export function NavLinks() {
                     <Link key={link.href} href={link.href}>
                         <Button
                             variant={link.variant as "ghost" | "default"}
-                            className={(pathname === link.href && pathname != '/contact') ? "bg-primary/10" : ""}
+                            className={(pathname === link.href && pathname != '/dashboard') ? "bg-primary/10" : ""}
                         >
                             {link.label}
                         </Button>
