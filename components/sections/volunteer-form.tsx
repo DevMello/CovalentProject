@@ -90,14 +90,13 @@ export default function VolunteerForm() {
             // Simulate API call
             await new Promise((resolve) => setTimeout(resolve, 1500))
 
-            toast({
-                title: "Application submitted successfully",
+            toast("Application submitted successfully", {
                 description: "Thank you for your interest in volunteering. We'll be in touch soon!",
             })
+
             form.reset()
         } catch (error) {
-            toast({
-                title: "Submission failed",
+            toast("Submission failed", {
                 description: "There was an error submitting your application. Please try again.",
                 variant: "destructive",
             })
