@@ -8,32 +8,32 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { CommentSection } from "@/components/sections/comment-section"
 import { mockProjects } from "@/lib/mock-data"
+import {JSX} from "react"
 
-type Props = {
-    params: {
-        slug: string
-    }
-}
+type ProjectPageProps = {
+    params: Promise<{ slug: string }>;  // Ensure params is a promise
+};
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const f = await params;
-    const project = mockProjects.find((p) => p.id === f.slug)
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+    const { slug } = await params;
+    const project = mockProjects.find((p) => p.id === slug);
 
     if (!project) {
         return {
             title: "Abstract Not Found",
             description: "The requested research abstract could not be found",
-        }
+        };
     }
 
     return {
         title: `${project.title} | Research Abstract`,
         description: project.abstract.substring(0, 160) + "...",
-    }
+    };
 }
-export default async function ProjectPage({ params }: Props) {
-    const f = await params;
-    const project = mockProjects.find((p) => p.id === f.slug);
+
+export default async function ProjectPage({ params }: ProjectPageProps): Promise<JSX.Element> {
+    const { slug } = await params;
+    const project = mockProjects.find((p) => p.id === slug);
 
     if (!project) {
         notFound();

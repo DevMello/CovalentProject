@@ -59,20 +59,14 @@ export function DonationForm() {
             // Simulate API call
             await new Promise((resolve) => setTimeout(resolve, 1500))
 
-            toast({
-                title: "Donation successful!",
-                description: `Thank you for your ${donationType === "monthly" ? "monthly" : "one-time"} donation of $${
+            toast(`Donation successful! - Thank you for your ${donationType === "monthly" ? "monthly" : "one-time"} donation of $${
                     isCustomAmount ? data.customAmount : data.amount
-                }.`,
-            })
+                }.`)
 
             form.reset()
         } catch (error) {
-            toast({
-                title: "Donation failed",
-                description: "There was an error processing your donation. Please try again.",
-                variant: "destructive",
-            })
+            console.log(error)
+            toast("There was an error with your request")
         } finally {
             setIsSubmitting(false)
         }

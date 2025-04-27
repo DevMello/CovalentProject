@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { MessageSquare, Send } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -24,16 +23,17 @@ type CommentSectionProps = {
 }
 
 export function CommentSection({ projectId, comments }: CommentSectionProps) {
+    console.log(projectId, comments)
     const [isLoggedIn, setIsLoggedIn] = useState(false) // In a real app, this would come from auth state
     const [showCommentForm, setShowCommentForm] = useState(false)
     const [commentText, setCommentText] = useState("")
     const [localComments, setLocalComments] = useState<Comment[]>(comments)
-    const router = useRouter()
 
     const handleAddComment = () => {
         if (!isLoggedIn) {
             // In a real app, this would redirect to your login page
             toast("Please log in to add a comment.")
+            setIsLoggedIn(false)
             // router.push("/login") // Uncomment in a real app
             return
         }
@@ -43,9 +43,7 @@ export function CommentSection({ projectId, comments }: CommentSectionProps) {
 
     const handleSubmitComment = () => {
         if (!commentText.trim()) {
-            toast({
-                title: "Empty comment",
-            })
+            toast("Empty comment")
             return
         }
 
@@ -61,10 +59,7 @@ export function CommentSection({ projectId, comments }: CommentSectionProps) {
         setCommentText("")
         setShowCommentForm(false)
 
-        toast({
-            title: "Comment added",
-            description: "Your comment has been added successfully.",
-        })
+        toast( "Comment added - Your comment has been added successfully.")
     }
 
     const getInitials = (name: string) => {
