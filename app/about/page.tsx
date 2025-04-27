@@ -41,7 +41,7 @@ export default function AboutPage() {
                     </div>
                     <div className="rounded-lg overflow-hidden h-[400px] relative">
                         <Image
-                            src="/placeholder.svg?height=800&width=600"
+                            src="/about/collaborate.jpg"
                             alt="Scientists collaborating"
                             fill
                             className="object-cover"

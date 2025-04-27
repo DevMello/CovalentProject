@@ -11,7 +11,7 @@ export function middleware(request: NextRequest) {
     // If there's no token or it's expired, redirect to login page.
     if (!token || isTokenExpired(token)) {
       const url = request.nextUrl.clone();
-      url.pathname = '/';
+      url.pathname = '/login';
       return NextResponse.redirect(url);
     }
   }
